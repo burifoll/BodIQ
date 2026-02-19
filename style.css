@@ -1,0 +1,732 @@
+/* ====================================================================== */
+/* ============================ ROOT & RESET ============================= */
+/* ====================================================================== */
+
+/* Змінні (кольори та ефекти для плашок) */
+:root {
+  --light-bg: rgb(241, 238, 234);
+  --dark-bg: rgb(236, 233, 229);
+
+  --block-bg-color: 231, 228, 223;
+  --block-opacity: 0.6;
+  --block-blur: 10px;
+}
+
+/* Базовий reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Базові стилі сторінки */
+body {
+  font-family: "TT Commons", sans-serif;
+  background: #f4f1ec;
+  color: #111;
+}
+
+/* Контейнер обмеження ширини */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+/* ====================================================================== */
+/* =============================== HEADER ================================ */
+/* ====================================================================== */
+
+/* Загальна структура header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 40px 0;
+}
+
+/* Ліва частина header */
+.header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 29px;
+}
+
+/* Логотип */
+.logo {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-left: 28px;
+
+}
+
+
+/* ====================================================================== */
+/* ================================ NAV ================================= */
+/* ====================================================================== */
+
+/* Контейнер навігації */
+.nav {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  gap: 26px;
+  margin-top: 2px;
+
+  background: rgba(var(--block-bg-color), var(--block-opacity));
+  backdrop-filter: blur(var(--block-blur));
+  -webkit-backdrop-filter: blur(var(--block-blur));
+
+  padding: 7px;
+  border-radius: 50px;
+
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.04),
+    inset 0 -1px 3px rgba(255, 255, 255, 0.6);
+}
+
+/* Індикатор активної вкладки */
+.nav-indicator {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 0px;
+  width: 160px;
+  border-radius: 40px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.35),
+    rgba(255, 255, 255, 0.1)
+  );
+
+  backdrop-filter: blur(25px) saturate(160%);
+  -webkit-backdrop-filter: blur(25px) saturate(160%);
+
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+  transition: transform 0.35s ease, width 0.35s ease;
+  z-index: 0;
+}
+
+/* Вимкнення анімації (для переходу між сторінками) */
+.nav-indicator.no-transition {
+  transition: none;
+}
+
+/* Пункти меню */
+.nav-item {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: #111;
+  padding: 20px 20px;
+  border-radius: 40px;
+
+  transition: transform 0.1s ease;
+}
+
+.nav-item.active {
+  font-weight: 600;
+}
+
+.nav-item:active {
+  transform: scale(0.97);
+}
+
+
+/* ====================================================================== */
+/* ================================ ICONS ================================ */
+/* ====================================================================== */
+
+/* Контейнер іконок */
+.icons {
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  gap: 6px;
+
+  background: rgba(var(--block-bg-color), var(--block-opacity));
+  backdrop-filter: blur(var(--block-blur));
+  -webkit-backdrop-filter: blur(var(--block-blur));
+
+  padding: 9px;
+  border-radius: 50px;
+
+  box-shadow:
+    inset 0 2px 6px rgba(0, 0, 0, 0.06),
+    inset 0 -2px 6px rgba(255, 255, 255, 0.4);
+}
+
+/* Рухомий індикатор для іконок */
+.icons-indicator {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  width: 0px;
+  opacity: 0;
+  border-radius: 40px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,0.35),
+    rgba(255,255,255,0.1)
+  );
+
+  backdrop-filter: blur(25px) saturate(160%);
+  -webkit-backdrop-filter: blur(25px) saturate(160%);
+
+  border: 1px solid rgba(255,255,255,0.4);
+
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+
+  transition: transform 0.35s ease;
+  z-index: 0;
+}
+
+/* Кнопки-іконки */
+.icon-btn {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 60px;
+  height: 60px;
+  border-radius: 40px;
+  text-decoration: none;
+
+  transition: transform 0.2s ease;
+}
+
+.icon-btn img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.icon-btn:hover {
+  transform: scale(1.05);
+}
+
+.icon-btn:active {
+  transform: scale(0.96);
+}
+
+
+/* ====================================================================== */
+/* ================================ HERO ================================= */
+/* ====================================================================== */
+
+/* Основна hero-секція */
+.hero {
+  display: flex;
+  align-items: flex-start;
+  gap: 5%;
+  margin-top: 40px;
+  position: relative;
+}
+
+/* Зображення hero */
+.hero-image img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+
+/* Контент hero */
+.hero-content {
+  max-width: 1000px;
+}
+
+.hero-content h1 {
+  font-size: 4.2rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+.hero-content p {
+  font-size: 1.9rem;
+  margin-bottom: 90px;
+}
+
+
+/* ====================== Кнопка в hero ====================== */
+
+.btn {
+  display: inline-block;
+  padding: 45px 45px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(206, 222, 241, 0.9),
+    rgba(206, 222, 241, 0.6)
+  );
+
+  backdrop-filter: blur(25px) saturate(160%);
+  -webkit-backdrop-filter: blur(25px) saturate(160%);
+
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+
+  text-decoration: none;
+  color: #111;
+  font-size: 2.4rem;
+  font-weight: 600;
+
+  transition: transform 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+
+/* ====================== Плаваюча кнопка (пошта / чат) ====================== */
+
+.floating-mail {
+  position: absolute;
+  right: 30px;
+  top: 100%;
+  transform: translateY(-50%);
+
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.35),
+    rgba(255, 255, 255, 0.1)
+  );
+
+  backdrop-filter: blur(25px) saturate(160%);
+  -webkit-backdrop-filter: blur(25px) saturate(160%);
+
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.floating-mail img {
+  width: 24px;
+  height: 24px;
+}
+
+.floating-mail:hover {
+  transform: translateY(-50%) scale(1.05);
+}
+
+
+/* ====================================================================== */
+/* ============================== RESPONSIVE ============================= */
+/* ====================================================================== */
+
+@media (max-width: 900px) {
+
+  /* Hero переходить у колонку */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+}
+
+
+/* =================================================================================================================================== */
+/* ============================== CATALOG ============================================================================================ */
+/* =================================================================================================================================== */
+
+.catalog-container { 
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
+/* ====================== Загальний layout каталогу ===================== */
+
+.catalog {
+  display: grid;
+  grid-template-columns: 235px 1fr;
+  gap: 60px;
+  margin-top: 40px;
+  align-items: start;
+}
+
+
+/* ====================== Сітка товарів ====================== */
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px 18px; /* row-gap column-gap */
+  justify-content: start;
+  min-height:350px; /* тимчасова висота */
+}
+
+/* ====================== Назва Фільтр ====================== */
+
+.filters-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  margin-top: -15px;
+  margin-left: 30px;
+}
+
+
+/* ====================== Тимчасова відладка фільтра ====================== */
+
+.filters {
+  width: 235px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* відстань між плашками */
+ 
+
+  
+}
+
+
+/* ====================================================================== */
+/* ============================= Фільтр Ціни ============================ */
+/* ====================================================================== */
+
+
+/* ====================== Основна плашка фільтра ====================== */
+
+.price-filter {
+  width: 235px;
+  height: 183.2px;
+  background: rgb(241, 238, 234);
+  border-radius: 50px;
+  position: relative;
+}
+
+
+/* ====================== Капсула з назвою "Ціна" ====================== */
+
+.price-title {
+  position: absolute;
+  top: 16px;
+  left: 19px;
+
+  width: 74.8px;
+  height: 44.9px;
+  background: rgb(236, 233, 229);
+  border-radius: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+}
+
+
+/* ====================== Капсули зі значеннями мін/макс ====================== */
+
+.price-values {
+  position: absolute;
+  top: 78px;
+  left: 19px;
+  right: 20px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.price-value {
+  width: 74.8px;
+  height: 44.5px;
+  background: rgb(248, 247, 245);
+  border-radius: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 700;
+}
+
+
+/* ====================================================================== */
+/* ============================= Слайдер ================================ */
+/* ====================================================================== */
+
+
+/* ====================== Контейнер слайдера ====================== */
+
+.range-wrapper {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  width: 193.5px;
+  height: 25.4px;
+}
+
+
+/* ====================== Загальна сіра доріжка ====================== */
+
+.range-track {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 6.6px;
+  background: rgb(233, 230, 228);
+  border-radius: 50px;
+}
+
+
+/* ====================== Активна синя частина ====================== */
+
+.range-progress {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 6.6px;
+  background: #0075ff;
+  border-radius: 50px;
+}
+
+
+/* ====================== Два input[type="range"] поверх ====================== */
+
+.range-wrapper input[type="range"] {
+  appearance: none;
+  -webkit-appearance: none;
+  position: absolute;
+  width: 100%;
+  height: 25.4px;
+  background: none;
+  pointer-events: none;
+}
+
+
+/* ====================== Бігунки ====================== */
+
+.range-wrapper input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 38.8px;
+  height: 25.4px;
+  border-radius: 12px;
+  background: #ffffff;
+  cursor: pointer;
+  pointer-events: auto;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.15s ease;
+}
+
+.range-wrapper input[type="range"]::-webkit-slider-runnable-track {
+  background: none;
+}
+
+
+/* ====================== Анімація бігунка ====================== */
+
+.range-wrapper input[type="range"]:hover::-webkit-slider-thumb {
+  transform: scale(1.08);
+}
+
+.range-wrapper input[type="range"]:active::-webkit-slider-thumb {
+  transform: scale(1.15);
+}
+
+
+/* ===========================================================================*/
+/* ============================= Плашка Категорій ============================ */
+/* =========================================================================== */
+
+.categories-filter {
+  width: 212.3px;
+  height: 340px;
+  background: rgb(241, 238, 234);
+  border-radius: 50px;
+  position: relative;
+  margin-top: 25px; /* відступ від плашки з ціною */
+}
+
+/* Капсула з назвою */
+.categories-title {
+  position: absolute;
+  top: 21px;
+  left: 19px;
+
+  width: 117.2px;
+  height: 45px;
+
+  background: rgb(236, 233, 229);
+  border-radius: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* Список категорій */
+.categories-list {
+  position: absolute;
+  top: 85px;
+  left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.category-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* Відключаємо стандартний стиль крапочок */
+
+.category-item input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #9c9c9c;
+  background: transparent;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Створюємо свій */
+
+.category-item input[type="radio"]:checked {
+  background: rgb(0, 117, 255);
+  border-color: rgb(0, 117, 255);
+  box-shadow: 0 0 8px rgba(0,117,255,0.3);
+}
+
+/* ============================= Карточка товару =============================================================================================== */
+
+.product-card {
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.product-body {
+  background: rgb(237, 234, 231);
+  border-radius: 50px;
+  padding: 30px;
+}
+
+/* ====================== Блок з фотографією ====================== */
+
+.product-image {
+  width: 200px;
+  height: 200px;
+  background: rgb(248, 247, 245);
+  border-radius: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image img {
+   width: 170px;
+   height: 170px;
+   object-fit: contain;
+   
+}
+
+/* ====================== Назва бренду ====================== */
+.product-brand {
+  font-size: 1.2rem;
+  opacity: 0.6;
+  margin-bottom: 9px;
+  margin-top: 18px;
+}
+
+/* ====================== Назва товару ====================== */
+.product-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: -5px;
+}
+
+/* ====================== Капсула з ціною карточки ====================== */
+
+.product-price {
+  background: rgb(221, 229, 238);
+  border-radius: 50px;
+  padding: 8px 18px;
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin-top: 17px;
+  
+}
+
+/* ====== Зміна кольору посилання на карточці товару ====== */
+
+.product-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* ====== Збільшення карточки при наведенні ====== */
+.product-link:hover .product-body {
+  transform: translateY(-5px);
+  transition: 0.2s ease;
+}
+
+

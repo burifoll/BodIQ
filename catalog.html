@@ -1,0 +1,304 @@
+<!-- ====================================================================== -->
+<!-- ============================== ПІДКЛЮЧЕННЯ СТИЛІВ ===================== -->
+<!-- ====================================================================== -->
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="fonts.css">
+
+
+<!-- ====================================================================== -->
+<!-- ================================ HEADER =============================== -->
+<!-- ====================================================================== -->
+
+<header class="header container">
+
+  <!-- ===== Ліва частина header (логотип + навігація) ===== -->
+  <div class="header-left">
+
+    <!-- Логотип -->
+    <div class="logo">BodIQ</div>
+
+    <!-- ================= Навігаційне меню ================= -->
+    <nav class="nav">
+
+      <!-- Рухомий індикатор вкладки -->
+      <span class="nav-indicator"></span>
+
+      <!-- Пункти меню -->
+      <a href="index.html" class="nav-item">Головна</a>
+      <a href="catalog.html" class="nav-item active">Каталог</a>
+      <a href="calculator.html" class="nav-item">Калькулятор</a>
+
+    </nav>
+  </div>
+
+
+  <!-- ===== Права частина header (іконки) ===== -->
+  <div class="icons">
+
+    <!-- Рухомий індикатор іконок -->
+    <span class="icons-indicator"></span>
+
+    <!-- Іконки -->
+    <a class="icon-btn" href="#">
+      <img src="icons/cart.svg" alt="Кошик">
+    </a>
+
+    <a class="icon-btn" href="#">
+      <img src="icons/heart.svg" alt="Список бажань">
+    </a>
+
+    <a class="icon-btn" href="#">
+      <img src="icons/user.svg" alt="Особистий кабінет">
+    </a>
+
+  </div>
+
+</header>
+
+
+<!-- ====================================================================== -->
+<!-- ================================ MAIN ================================= -->
+<!-- ====================================================================== -->
+
+<main class="container catalog-container">
+
+  <!-- ================================================================== -->
+  <!-- =========================== CATALOG ============================== -->
+  <!-- ================================================================== -->
+
+  <section class="catalog">
+
+
+    <!-- =============================================================== -->
+    <!-- =========================== ФІЛЬТР ============================ -->
+    <!-- =============================================================== -->
+
+    <aside class="filters">
+
+      <!-- Заголовок блоку фільтра -->
+      <h2 class="filters-title">Фільтр</h2>
+
+
+      <!-- =========================================================== -->
+      <!-- ======================== ФІЛЬТР ЦІНИ ====================== -->
+      <!-- =========================================================== -->
+
+      <div class="price-filter">
+
+        <!-- Капсула з назвою -->
+        <div class="price-title">Ціна</div>
+
+        <!-- Мінімальне та максимальне значення -->
+        <div class="price-values">
+          <div class="price-value" id="minPrice">0</div>
+          <div class="price-value" id="maxPrice">4000</div>
+        </div>
+
+        <!-- Слайдер -->
+        <div class="range-wrapper">
+
+          <!-- Сіра доріжка -->
+          <div class="range-track"></div>
+
+          <!-- Активна синя частина -->
+          <div class="range-progress" id="rangeProgress"></div>
+
+          <!-- Два input для подвійного слайдера -->
+          <input type="range" id="rangeMin">
+          <input type="range" id="rangeMax">
+
+        </div>
+
+      </div> <!-- ===== Кінець price-filter ===== -->
+
+
+      <!-- =========================================================== -->
+      <!-- ===================== ФІЛЬТР КАТЕГОРІЙ ==================== -->
+      <!-- =========================================================== -->
+
+      <div class="categories-filter">
+
+        <!-- Капсула з назвою -->
+        <div class="categories-title">
+          Категорії
+        </div>
+
+        <!-- Список категорій -->
+        <div class="categories-list">
+
+          <label class="category-item">
+            <input type="radio" name="category">
+            <span>Протеїн</span>
+          </label>
+
+          <label class="category-item">
+            <input type="radio" name="category">
+            <span>Бари</span>
+          </label>
+
+          <label class="category-item">
+            <input type="radio" name="category">
+            <span>Гейнери</span>
+          </label>
+
+          <label class="category-item">
+            <input type="radio" name="category">
+            <span>Креатин</span>
+          </label>
+
+          <label class="category-item">
+            <input type="radio" name="category">
+            <span>Вітаміни</span>
+          </label>
+
+          <label class="category-item">
+            <input type="radio" name="category">
+            <span>Аксесуари</span>
+          </label>
+
+        </div>
+      </div> <!-- ===== Кінець categories-filter ===== -->
+
+    </aside> <!-- ===== Кінець filters ===== -->
+
+
+<!-- =============================================================== -->
+<!-- =========================== ТОВАРИ ============================ -->
+<!-- =============================================================== -->
+
+<div class="products-grid">
+
+  <!-- =========================================================== -->
+  <!-- ====================== КАРТКИ ТОВАРУ ====================== -->
+  <!-- =========================================================== -->
+
+<div class="products-grid">
+
+
+  <!-- ===== Картка 1 ===== -->
+<a href="product-eaa.html" class="product-link">
+
+  <div class="product-card">
+
+    <div class="product-body">
+
+      <div class="product-image">
+        <img src="images/extrem_instant_eaa.png" alt="Extreme Instant EAA">
+      </div>
+
+      <div class="product-info">
+        <div class="product-brand">BODY ATTACK</div>
+        <div class="product-title">Extreme Instant EAA</div>
+      </div>
+
+    </div>
+
+    <div class="product-price">
+      1 850 грн
+    </div>
+
+  </div>
+
+</a>
+
+  <!-- ===== Картка 2 ===== -->
+  <a href="product-bcaa_kick_500 ml.html" class="product-link">
+
+  <div class="product-card">
+    <div class="product-body">
+      <div class="product-image">
+        <img src="images/bcaa_kick_500 ml.png" alt="BCAA KICK 500 ML">
+      </div>
+      <div class="product-info">
+        <div class="product-brand">BODY ATTACK</div>
+        <div class="product-title">BCAA KICK 500 ML</div>
+      </div>
+    </div>
+    <div class="product-price">250 грн</div>
+  </div>
+
+</a>
+
+  <!-- ===== Картка 3 ===== -->
+  <a href="product-ba_whey_protein.html" class="product-link">
+  
+  <div class="product-card">
+    <div class="product-body">
+      <div class="product-image">
+      <img src="images/ba_whey_protein.png" alt="WHEY PROTEIN">
+      </div>
+      <div class="product-info">
+        <div class="product-brand">BODY ATTACK</div>
+        <div class="product-title">WHEY PROTEIN</div>
+      </div>
+    </div>
+    <div class="product-price">890 грн</div>
+  </div>
+
+</a>
+
+  <!-- ===== Картка 4 ===== -->
+  <a href="product-nw_whey_protein.html" class="product-link">
+
+  <div class="product-card">
+    <div class="product-body">
+      <div class="product-image">
+      <img src="images/nw_whey_protein.png" alt="WHEY PROTEIN">
+      </div>
+      <div class="product-info">
+        <div class="product-brand">NATURE WHEY</div>
+        <div class="product-title">WHEY PROTEIN</div>
+      </div>
+    </div>
+    <div class="product-price">870 грн</div>
+  </div>
+
+</a>
+
+  <!-- ===== Картка 5 ===== -->
+  <a href="product-aa_complex_ronnie.html" class="product-link">
+
+  <div class="product-card">
+    <div class="product-body">
+      <div class="product-image">
+      <img src="images/aa_complex_ronnie.png" alt="COMPLEX RONNIE">
+      </div>
+      <div class="product-info">
+        <div class="product-brand">AMINO ACID</div>
+        <div class="product-title"> COMPLEX RONNIE</div>
+      </div>
+    </div>
+    <div class="product-price">1 150 грн</div>
+  </div>
+
+</a>
+
+  <!-- ===== Картка 6 ===== -->
+  <a href="product-mc_protein_bars.html" class="product-link">
+
+  <div class="product-card">
+    <div class="product-body">
+      <div class="product-image">
+      <img src="images/mc_protein_bars.png" alt="PROTEIN BAR">
+      </div>
+      <div class="product-info">
+        <div class="product-brand">MULTICOMPONEN</div>
+        <div class="product-title">PROTEIN BARS</div>
+      </div>
+    </div>
+    <div class="product-price">45 грн</div>
+  </div>
+</div>
+
+</a>
+
+</div> 
+
+<!-- =============================== JS =================================== -->
+
+<script src="script.js"></script>
+</body>
+
+
+
