@@ -71,60 +71,124 @@ const minRange = document.getElementById("rangeMin");
 const maxRange = document.getElementById("rangeMax");
 const progress = document.getElementById("rangeProgress");
 
-const minLabel = document.getElementById("minPrice");
-const maxLabel = document.getElementById("maxPrice");
+if (minRange && maxRange && progress) {
 
-const MIN = 0;
-const MAX = 4000;
-const STEP_GAP = 0; // минимальная дистанция между бегунками
+  const minLabel = document.getElementById("minPrice");
+  const maxLabel = document.getElementById("maxPrice");
 
-minRange.min = MIN;
-minRange.max = MAX;
-maxRange.min = MIN;
-maxRange.max = MAX;
+  const MIN = 0;
+  const MAX = 4000;
 
-minRange.value = 0;
-maxRange.value = 4000;
+  minRange.min = MIN;
+  minRange.max = MAX;
+  maxRange.min = MIN;
+  maxRange.max = MAX;
 
-function updateSlider() {
+  minRange.value = 0;
+  maxRange.value = 4000;
 
-  let minVal = parseInt(minRange.value);
-  let maxVal = parseInt(maxRange.value);
+  function updateSlider(e) {
 
-  const thumbWidth = 38.8; // ширина бегунка
-  const trackWidth = 193.5; // ширина полоски
+    let minVal = parseInt(minRange.value);
+    let maxVal = parseInt(maxRange.value);
 
-  const thumbPercent = (thumbWidth / trackWidth) * 100;
+    const thumbWidth = 38.8;
+    const trackWidth = 193.5;
+    const thumbPercent = (thumbWidth / trackWidth) * 100;
 
-  // Жёсткое ограничение без налезания
-  if ((maxVal - minVal) / (MAX - MIN) * 100 <= thumbPercent) {
-    if (event.target === minRange) {
-      minVal = maxVal - ((thumbPercent / 100) * (MAX - MIN));
-      minRange.value = Math.floor(minVal);
-    } else {
-      maxVal = minVal + ((thumbPercent / 100) * (MAX - MIN));
-      maxRange.value = Math.ceil(maxVal);
+    if ((maxVal - minVal) / (MAX - MIN) * 100 <= thumbPercent) {
+      if (e.target === minRange) {
+        minVal = maxVal - ((thumbPercent / 100) * (MAX - MIN));
+        minRange.value = Math.floor(minVal);
+      } else {
+        maxVal = minVal + ((thumbPercent / 100) * (MAX - MIN));
+        maxRange.value = Math.ceil(maxVal);
+      }
     }
+
+    const percentMin = (minVal - MIN) / (MAX - MIN) * 100;
+    const percentMax = (maxVal - MIN) / (MAX - MIN) * 100;
+
+    progress.style.left = percentMin + "%";
+    progress.style.width = (percentMax - percentMin) + "%";
+
+    minLabel.textContent = Math.floor(minVal);
+    maxLabel.textContent = Math.floor(maxVal);
   }
 
-  const percentMin = (minVal - MIN) / (MAX - MIN) * 100;
-  const percentMax = (maxVal - MIN) / (MAX - MIN) * 100;
+  minRange.addEventListener("input", updateSlider);
+  maxRange.addEventListener("input", updateSlider);
 
-  progress.style.left = percentMin + "%";
-  progress.style.width = (percentMax - percentMin) + "%";
-
-  minLabel.textContent = Math.floor(minVal);
-  maxLabel.textContent = Math.floor(maxVal);
+  updateSlider();
 }
 
-minRange.addEventListener("input", updateSlider);
-maxRange.addEventListener("input", updateSlider);
-
-updateSlider();
 
 
 
+document.addEventListener('DOMContentLoaded', function() {
+
+  const genderToggle = document.querySelector('.gender-toggle');
+  const genderButtons = document.querySelectorAll('.gender-option');
+
+  if (!genderToggle || genderButtons.length === 0) return;
+
+  genderButtons.forEach(button => {
+    button.addEventListener('click', () => {
+
+      genderButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      if (button.dataset.gender === 'female') {
+        genderToggle.classList.add('female');
+      } else {
+        genderToggle.classList.remove('female');
+      }
+
+    });
+  });
+
+});
 
 
+
+const ageRange = document.getElementById("ageRange");
+const weightRange = document.getElementById("weightRange");
+const heightRange = document.getElementById("heightRange");
+
+const ageValue = document.getElementById("ageValue");
+const weightValue = document.getElementById("weightValue");
+const heightValue = document.getElementById("heightValue");
+
+function updateSliderBackground(slider) {
+  const min = slider.min;
+  const max = slider.max;
+  const val = slider.value;
+
+  const percent = ((val - min) / (max - min)) * 100;
+
+  slider.style.background = `
+    linear-gradient(
+      to right,
+      rgb(0,117,255) ${percent}%,
+      rgb(233,230,228) ${percent}%
+    )
+  `;
+}
+
+function initSlider(slider, output) {
+  if (!slider) return;
+
+  output.textContent = slider.value;
+  updateSliderBackground(slider);
+
+  slider.addEventListener("input", () => {
+    output.textContent = slider.value;
+    updateSliderBackground(slider);
+  });
+}
+
+initSlider(ageRange, ageValue);
+initSlider(weightRange, weightValue);
+initSlider(heightRange, heightValue);
 
 

@@ -837,12 +837,230 @@ body {
   transform: translateY(-3px);
 }
 
-/* ============================================================================================================================================================================================ */
-/* ========================================================== Сторінка продукту =============================================================================================================== */
-/* ============================================================================================================================================================================================ */
+/* ============================================================================================================================================================================================= */
+/* =========================================================Сторінка калькулятора ============================================================================================================== */
+/* ============================================================================================================================================================================================= */
+
+.calculator-page {
+  margin-top: -40px;
+}
+
+/* ================================================== ОСНОВНА СІТКА =================================================== */
+
+.calculator-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-top: 60px;
+  align-items: start;
+}
 
 
+/* =================================================== ЗАГОЛОВКИ ====================================================== */
+
+.calculator-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-left: 19px;
+}
+
+.result-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+}
 
 
+/* ==================================================== КОЛОНКИ ======================================================= */
 
 
+.calculator-area {
+  min-height: 725px;
+}
+
+.result-area {
+  min-height: 602px;
+}
+
+/* ================================================== БЛОК СТАТІ ====================================================== */
+
+.gender-block {
+  margin-top: 45px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.gender-label {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-left: 19px;
+}
+
+
+/* ------------------------------------ Перемикач статі ------------------------------------ */
+
+.gender-toggle {
+  --scale: 1.15;
+
+  position: relative;
+  width: calc(275px * var(--scale));
+  height: calc(73px * var(--scale));
+  background: rgb(241, 238, 234);
+  border-radius: calc(56px * var(--scale));
+  display: flex;
+  align-items: center;
+}
+
+.gender-indicator {
+  position: absolute;
+  width: calc(126px * var(--scale));
+  height: calc(59px * var(--scale));
+  top: calc(7px * var(--scale));
+  left: calc(7px * var(--scale));
+  border-radius: calc(56px * var(--scale));
+
+  background:
+    linear-gradient(145deg,
+      rgba(255,255,255,0.45),
+      rgba(255,255,255,0.15)
+    ),
+    rgb(220, 228, 238);
+
+  backdrop-filter: blur(25px) saturate(160%);
+  -webkit-backdrop-filter: blur(25px) saturate(160%);
+
+  border: 1px solid rgba(255,255,255,0.6);
+
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.035),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  transition: all 0.35s ease;
+}
+
+
+/* ------------------------------------ Стан "Жінка" (активний правий бік) ------------------------------------ */
+
+.gender-toggle.female .gender-indicator {
+  left: calc(100% - (126px * var(--scale)) - (7px * var(--scale)));
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.45),
+      rgba(255,255,255,0.15)
+    ),
+    rgb(249, 220, 225);
+}
+
+.gender-option {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  height: 100%;
+  border: none;
+  background: none;
+  font-size: calc(1.4rem * var(--scale));
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.gender-option.active {
+  font-weight: 600;
+}
+
+
+/* ===================================================================================================================== */
+/* ================================================= БЛОК ПОВЗУНКІВ ================================================== */
+/* ===================================================================================================================== */
+
+.sliders-block {
+  width: 100%;
+  max-width: 672px;
+  height: 325px;
+  background: rgb(241, 238, 234);
+  margin-top: 40px;
+  border-radius: 40px;
+  padding-top: 33px;
+}
+
+
+/* ------------------------------------ Рядок повзунка ------------------------------------ */
+
+.slider-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 53px;
+}
+
+.slider-row:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ------------------------------------ Підпис параметра ------------------------------------ */
+
+.slider-label {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-left: 24px;
+  width: 172px;
+}
+
+
+/* ------------------------------------ Обгортка повзунка ------------------------------------ */
+
+.slider-wrapper {
+  width: 339.5px;
+  margin-left: 12px;
+  margin-right: 40px; /* відступ до капсули значення */
+}
+
+
+/* ------------------------------------ Доріжка повзунка ------------------------------------ */
+
+.slider-wrapper input[type="range"] {
+  width: 100%;
+  height: 12px;
+  appearance: none;
+  border-radius: 50px;
+  background: rgb(233, 230, 228);
+  outline: none;
+}
+
+
+/* ------------------------------------ Повзунок (thumb) ------------------------------------ */
+
+.slider-wrapper input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 38.8px;
+  height: 25.4px;
+  border-radius: 12px;
+  background: rgb(255, 255, 255);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+
+/* Hover-ефект повзунка */
+
+.slider-wrapper input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+}
+
+
+/* ------------------------------------ Капсула значення ------------------------------------ */
+
+.slider-value {
+  width: 74.8px;
+  height: 52.5px;
+  background: rgb(255,255,255);
+  border-radius: 26px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 25px;
+}
