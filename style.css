@@ -850,7 +850,7 @@ body {
 .calculator-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 18px;
   margin-top: 60px;
   align-items: start;
 }
@@ -1356,7 +1356,7 @@ body {
   border: none;
   cursor: pointer;
 
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   font-weight: 600;
 
   display: flex;
