@@ -50,7 +50,7 @@
 
     <section class="calculator-section">
 
-      <!-- Левая часть -->
+      <!-- ================= Левая колонка ================= -->
       <div class="calculator-area">
 
         <h1 class="calculator-title">Калькулятор калорій</h1>
@@ -73,8 +73,6 @@
           </div>
 
         </div>
-        <!-- ===== Конец блока Стать ===== -->
-
 
         <!-- ===== Блок слайдеров ===== -->
         <div class="sliders-block">
@@ -82,49 +80,127 @@
           <!-- Вік -->
           <div class="slider-row">
             <div class="slider-label">Вік (років):</div>
-
             <div class="slider-wrapper">
               <input type="range" id="ageRange" min="1" max="100" value="25">
             </div>
-
             <div class="slider-value" id="ageValue">25</div>
-
           </div>
 
           <!-- Вага -->
           <div class="slider-row">
             <div class="slider-label">Вага (кг):</div>
-
             <div class="slider-wrapper">
               <input type="range" id="weightRange" min="30" max="250" value="70">
             </div>
-
             <div class="slider-value" id="weightValue">70</div>
-
           </div>
 
           <!-- Зріст -->
           <div class="slider-row">
             <div class="slider-label">Зріст (см):</div>
-
             <div class="slider-wrapper">
               <input type="range" id="heightRange" min="130" max="230" value="175">
             </div>
-
             <div class="slider-value" id="heightValue">175</div>
           </div>
 
         </div>
-        <!-- ===== Конец блока слайдеров ===== -->
+
+        <!-- ===== Блок Ціль та Активність ===== -->
+        <div class="goal-activity-block">
+
+          <!-- Ваша мета -->
+          <div class="goal-row">
+
+            <div class="goal-label">Ваша Мета:</div>
+
+            <div class="goal-toggle">
+              <div class="goal-indicator"></div>
+
+              <button class="goal-option active" data-goal="cut">
+                Схуднення
+              </button>
+
+              <button class="goal-option" data-goal="bulk">
+                Набір маси
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Активність -->
+          <div class="activity-row">
+
+            <div class="activity-label">Активність:</div>
+
+            <div class="activity-select">
+
+              <div class="activity-text">Сидячий спосіб життя</div>
+
+              <button class="activity-btn" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2.5" stroke-linecap="round"
+                     stroke-linejoin="round" width="22" height="22">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+
+              <!-- ===== DROPDOWN ===== -->
+<div class="activity-dropdown">
+
+  <!-- Двигающаяся капсула -->
+  <div class="activity-hover-indicator"></div>
+
+  <div class="activity-option">
+    Надзвичайно активний
+  </div>
+
+  <div class="activity-option">
+    Дуже активний
+  </div>
+
+  <div class="activity-option">
+    Помірно активний
+  </div>
+
+  <div class="activity-option">
+    Легка активність
+  </div>
+
+  <div class="activity-option active">
+    Сидячий спосіб життя
+  </div>
+
+</div>
+<!-- ===== END DROPDOWN ===== -->
+              <!-- ===== END DROPDOWN ===== -->
+
+            </div>
+
+          </div>
+
+        </div>
 
       </div>
-      <!-- ===== Конец левой части ===== -->
+      <!-- ================= Конец левой колонки ================= -->
 
 
-      <!-- Правая часть -->
+      <!-- ================= Правая колонка ================= -->
       <div class="result-area">
         <h1 class="result-title">Денна потреба калорій:</h1>
+        <div class="result-card">
+
+  <div class="result-value">
+    2250
+  </div>
+
+  <button class="result-save-btn">
+    Зберегти результат
+  </button>
+
+</div>
       </div>
+      <!-- ================= Конец правой колонки ================= -->
 
     </section>
 

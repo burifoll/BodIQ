@@ -191,4 +191,93 @@ initSlider(ageRange, ageValue);
 initSlider(weightRange, weightValue);
 initSlider(heightRange, heightValue);
 
+/* ===== Перемикач Мета ===== */
 
+document.addEventListener('DOMContentLoaded', function() {
+
+  const goalToggle = document.querySelector('.goal-toggle');
+  const goalButtons = document.querySelectorAll('.goal-option');
+
+  if (!goalToggle || goalButtons.length === 0) return;
+
+  goalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+
+      goalButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      if (button.dataset.goal === 'bulk') {
+        goalToggle.classList.add('bulk');
+      } else {
+        goalToggle.classList.remove('bulk');
+      }
+
+    });
+  });
+
+});
+
+/* ===== DROPDOWN АКТИВНОСТІ ===== */
+
+document.addEventListener('DOMContentLoaded', function () {
+
+  const activityBtn = document.querySelector('.activity-btn');
+  const dropdown = document.querySelector('.activity-dropdown');
+  const options = document.querySelectorAll('.activity-option');
+  const indicator = document.querySelector('.activity-hover-indicator');
+  const activityText = document.querySelector('.activity-text');
+
+  if (!activityBtn || !dropdown || !indicator) return;
+
+  let activeOption = dropdown.querySelector('.activity-option.active');
+
+  function moveDropdownIndicator(element) {
+    indicator.style.top = element.offsetTop + "px";
+    indicator.style.width = element.offsetWidth + "px";
+  }
+
+  // Открытие
+  activityBtn.addEventListener('click', () => {
+    dropdown.classList.toggle('open');
+
+    if (dropdown.classList.contains('open') && activeOption) {
+      moveDropdownIndicator(activeOption);
+    }
+  });
+
+  // Hover + Click
+  options.forEach(option => {
+
+    option.addEventListener('mouseenter', () => {
+      moveDropdownIndicator(option);
+    });
+
+    option.addEventListener('click', () => {
+
+      options.forEach(o => o.classList.remove('active'));
+      option.classList.add('active');
+
+      activeOption = option;
+      activityText.textContent = option.textContent;
+
+      moveDropdownIndicator(option);
+      dropdown.classList.remove('open');
+    });
+
+  });
+
+  // Закрытие вне
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.activity-select')) {
+      dropdown.classList.remove('open');
+    }
+  });
+
+  // Первичная установка
+  if (activeOption) {
+    moveDropdownIndicator(activeOption);
+  }
+
+});
+
+ 

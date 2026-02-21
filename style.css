@@ -850,7 +850,7 @@ body {
 .calculator-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: 12px;
   margin-top: 60px;
   align-items: start;
 }
@@ -867,11 +867,11 @@ body {
 .result-title {
   font-size: 2.2rem;
   font-weight: 600;
+  margin-left: 35px;
 }
 
 
 /* ==================================================== КОЛОНКИ ======================================================= */
-
 
 .calculator-area {
   min-height: 725px;
@@ -919,12 +919,7 @@ body {
   left: calc(7px * var(--scale));
   border-radius: calc(56px * var(--scale));
 
-  background:
-    linear-gradient(145deg,
-      rgba(255,255,255,0.45),
-      rgba(255,255,255,0.15)
-    ),
-    rgb(220, 228, 238);
+  background: rgb(219, 229, 239);
 
   backdrop-filter: blur(25px) saturate(160%);
   -webkit-backdrop-filter: blur(25px) saturate(160%);
@@ -944,13 +939,7 @@ body {
 .gender-toggle.female .gender-indicator {
   left: calc(100% - (126px * var(--scale)) - (7px * var(--scale)));
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,0.45),
-      rgba(255,255,255,0.15)
-    ),
-    rgb(249, 220, 225);
+  background:rgb(249, 220, 225);
 }
 
 .gender-option {
@@ -1001,7 +990,7 @@ body {
 /* ------------------------------------ Підпис параметра ------------------------------------ */
 
 .slider-label {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: 600;
   margin-left: 24px;
   width: 172px;
@@ -1063,4 +1052,329 @@ body {
   align-items: center;
   justify-content: center;
   margin-right: 25px;
+}
+
+/* =================== Блок Мета + Активність =================== */
+
+.goal-activity-block {
+  width: 642.4px;
+  background: rgb(241, 238, 234);
+  border-radius: 50px;
+  margin-top: 25px;
+  margin-bottom: 50px;
+
+  padding: 46px 27px 22px 27px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+
+/* -------------------- Ваша Мета -------------------- */
+
+.goal-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.goal-label {
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+.goal-toggle {
+  position: relative;
+
+  width: 388.7px;
+  height: 80px;
+
+  background: rgb(236, 232, 229);
+  border-radius: 50px;
+
+  display: flex;
+  align-items: center;
+}
+
+/* Активна капсула */
+
+.goal-indicator {
+  position: absolute;
+  width: 184.3px;
+  height: 63.7px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 8px;
+  border-radius: 50px;
+
+  background: rgb(219, 229, 239);
+    
+
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+
+  border: 1px solid rgba(255,255,255,0.6);
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.05),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+
+  transition: all 0.35s ease;
+}
+
+.goal-toggle.bulk .goal-indicator {
+  left: calc(100% - 184.3px - 8px);
+}
+
+.goal-option {
+  flex: 1;
+  height: 100%;
+  border: none;
+  background: none;
+
+  font-size: 1.6rem;
+  font-weight: 500;
+
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+.goal-option.active {
+  font-weight: 600;
+}
+
+
+/* -------------------- Активність -------------------- */
+
+.activity-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.activity-label {
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+/* Плашка */
+
+.activity-select {
+  position: relative;
+
+  width: 390px;
+  height: 75.9px;
+
+  background: rgb(236, 232, 229);
+  border-radius: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: auto; 
+
+  padding-left: 25px;
+}
+
+.activity-text {
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+/* Кнопка */
+
+.activity-btn {
+  width: 65px;
+  height: 65px;
+  border-radius: 50px;
+  border: none;
+  background: rgb(228, 224, 222);
+  margin-right: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.activity-btn:hover {
+  transform: scale(1.03);
+}
+
+.activity-btn svg {
+  width: 32px;
+  height: 32px;
+}
+
+/* =================== DROPDOWN =================== */
+
+:root {
+  --dropdown-blur: 28px;
+}
+
+.activity-dropdown {
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  z-index: 50;
+
+  width: 354px;
+
+  border-radius: 36px;
+
+  background: rgba(241, 238, 234, 0.7);
+  backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(var(--dropdown-blur)) saturate(160%);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+
+  padding: 23px 26px 26px 26px;  /* ← главное изменение */
+
+  height: auto;
+  min-height: 170px;
+  
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: all 0.25s ease;
+
+  z-index: 50;
+}
+
+.activity-dropdown.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.activity-hover-indicator {
+  position: absolute;
+  left: 26px;
+  height: 60px;
+  border-radius: 56px;
+
+  background: rgba(219, 229, 239, 0.85);
+
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+
+  border: 1px solid rgba(255,255,255,0.6);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+
+  z-index: 1; /* ниже текста */
+
+  pointer-events: none; /* важно */
+
+  transition: top 0.25s ease,
+              left 0.25s ease,
+              width 0.25s ease;
+}
+
+/* Опции */
+
+.activity-option {
+  position: relative;
+  z-index: 2;
+  font-size: 1.6rem;
+  font-weight: 600;
+
+  width: fit-content;
+  height: 60px;
+  padding: 0 25px;
+
+  display: flex;
+  align-items: center;
+
+  border-radius: 56px;
+  cursor: pointer;
+
+  transition: background 0.25s ease, transform 0.15s ease;
+}
+
+.activity-option.active {
+  background: transparent;
+}
+
+
+
+/* ===== Основная плашка ===== */
+
+.result-card {
+  width: 511.2px;
+  height: 104.8px;
+
+  margin-top: 34px;
+
+  background: rgb(241, 238, 234);
+  border-radius: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 14px;
+}
+
+
+/* ===== Капсула значения ===== */
+
+.result-value {
+  width: 139.6px;
+  height: 78.5px;
+
+  background: rgb(236, 233, 230);
+  border-radius: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+
+/* ===== Кнопка сохранения ===== */
+
+.result-save-btn {
+  width: 313.5px;
+  height: 78.5px;
+
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+
+  font-size: 1.8rem;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgb(219, 229, 239);
+
+  box-shadow:
+  0 6px 14px rgba(0, 0, 0, 0.05),
+  inset 0 1px 0 rgba(255,255,255,0.8);
+
+  transition: all 0.25s ease;
+}
+
+.result-save-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.07),
+    inset 0 1px 0 rgba(255,255,255,0.9);
 }
