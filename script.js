@@ -237,13 +237,18 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Открытие
-  activityBtn.addEventListener('click', () => {
-    dropdown.classList.toggle('open');
+activityBtn.addEventListener('click', () => {
 
-    if (dropdown.classList.contains('open') && activeOption) {
-      moveDropdownIndicator(activeOption);
-    }
-  });
+  const select = activityBtn.closest('.activity-select');
+
+  dropdown.classList.toggle('open');
+  select.classList.toggle('open');   // ← вот этого у тебя не хватает
+
+  if (dropdown.classList.contains('open') && activeOption) {
+    moveDropdownIndicator(activeOption);
+  }
+
+});
 
   // Hover + Click
   options.forEach(option => {
@@ -268,9 +273,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Закрытие вне
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('.activity-select')) {
-      dropdown.classList.remove('open');
-    }
+  if (!e.target.closest('.activity-select')) {
+    dropdown.classList.remove('open');
+    activityBtn.closest('.activity-select')
+               .classList.remove('open');
+  }
   });
 
   // Первичная установка

@@ -1188,9 +1188,19 @@ body {
 .activity-btn {
   width: 65px;
   height: 65px;
-  border-radius: 50px;
-  border: none;
-  background: rgb(228, 224, 222);
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.6);
+
+  background: rgba(255,255,255,0.35); /* без градиента */
+  
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+
+   box-shadow:
+    0 6px 16px rgba(0,0,0,0.08),       /* мягкая внешняя тень */
+    inset 0 1px 0 rgba(255,255,255,0.85),
+    inset 0 -3px 6px rgba(0,0,0,0.04);
+
   margin-right: 8px;
 
   display: flex;
@@ -1198,16 +1208,34 @@ body {
   justify-content: center;
 
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .activity-btn:hover {
-  transform: scale(1.03);
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 22px rgba(0,0,0,0.10),
+    inset 0 1px 0 rgba(255,255,255,0.9),
+    inset 0 -3px 6px rgba(0,0,0,0.05);
+}
+
+.activity-btn:active {
+  transform: translateY(1px);
+  box-shadow:
+    0 4px 10px rgba(0,0,0,0.12),
+    inset 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .activity-btn svg {
   width: 32px;
   height: 32px;
+  transition: transform 0.25s ease;
+}
+
+/* Когда dropdown открыт — поворачиваем стрелку */
+.activity-dropdown.open ~ .activity-btn svg,
+.activity-select.open .activity-btn svg {
+  transform: rotate(180deg);
 }
 
 /* =================== DROPDOWN =================== */
@@ -1334,7 +1362,7 @@ body {
   width: 139.6px;
   height: 78.5px;
 
-  background: rgb(236, 233, 230);
+  background: rgb(255, 255, 255);
   border-radius: 50px;
 
   display: flex;
