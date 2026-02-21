@@ -159,38 +159,65 @@ const ageValue = document.getElementById("ageValue");
 const weightValue = document.getElementById("weightValue");
 const heightValue = document.getElementById("heightValue");
 
-function updateSliderBackground(slider) {
+function updateSlider(slider, output) {
+
+  if (!slider) return;
+
   const min = slider.min;
   const max = slider.max;
   const val = slider.value;
 
   const percent = ((val - min) / (max - min)) * 100;
 
+  // Цвет трека
   slider.style.background = `
     linear-gradient(
       to right,
-      rgb(0,117,255) ${percent}%,
+      rgba(0,117,255,0.75) ${percent}%,
       rgb(233,230,228) ${percent}%
     )
   `;
+
+  // Обновление значения
+  output.textContent = val;
+
+  // Обновление позиции белой подложки
+  const wrapper = slider.closest('.slider-wrapper');
+  const thumbBg = wrapper.querySelector('.thumb-bg');
+
+  const trackWidth = slider.offsetWidth;
+  const thumbWidth = 38.8;
+
+  const x = (percent / 100) * (trackWidth - thumbWidth);
+
+  thumbBg.style.left = x + "px";
 }
 
 function initSlider(slider, output) {
   if (!slider) return;
 
-  output.textContent = slider.value;
-  updateSliderBackground(slider);
+  const wrapper = slider.closest('.slider-wrapper');
+  const thumbBg = wrapper.querySelector('.thumb-bg');
+
+  // начальная установка
+  updateSlider(slider, output);
 
   slider.addEventListener("input", () => {
-    output.textContent = slider.value;
-    updateSliderBackground(slider);
+    updateSlider(slider, output);
+  });
+
+  slider.addEventListener("mouseenter", () => {
+    thumbBg.style.opacity = "1";
+  });
+
+  slider.addEventListener("mouseleave", () => {
+    thumbBg.style.opacity = "0";
   });
 }
 
 initSlider(ageRange, ageValue);
 initSlider(weightRange, weightValue);
 initSlider(heightRange, heightValue);
-
 /* ===== Перемикач Мета ===== */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -286,5 +313,7 @@ activityBtn.addEventListener('click', () => {
   }
 
 });
+
+ 
 
  

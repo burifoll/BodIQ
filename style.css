@@ -859,13 +859,13 @@ body {
 /* =================================================== ЗАГОЛОВКИ ====================================================== */
 
 .calculator-title {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 600;
   margin-left: 19px;
 }
 
 .result-title {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 600;
   margin-left: 35px;
 }
@@ -939,7 +939,7 @@ body {
 .gender-toggle.female .gender-indicator {
   left: calc(100% - (126px * var(--scale)) - (7px * var(--scale)));
 
-  background:rgb(249, 220, 225);
+  background:rgb(242, 211, 214);
 }
 
 .gender-option {
@@ -968,7 +968,7 @@ body {
   max-width: 672px;
   height: 325px;
   background: rgb(241, 238, 234);
-  margin-top: 40px;
+  margin-top: 35px;
   border-radius: 40px;
   padding-top: 33px;
 }
@@ -1003,6 +1003,7 @@ body {
   width: 339.5px;
   margin-left: 12px;
   margin-right: 40px; /* відступ до капсули значення */
+  position: relative;
 }
 
 
@@ -1020,24 +1021,89 @@ body {
 
 /* ------------------------------------ Повзунок (thumb) ------------------------------------ */
 
+/* БАЗА — обычный белый */
 .slider-wrapper input[type="range"]::-webkit-slider-thumb {
   appearance: none;
   width: 38.8px;
   height: 25.4px;
-  border-radius: 12px;
-  background: rgb(255, 255, 255);
+  border-radius: 14px;
+
+  background: #ffffff;
+
+  border: none;
+
+  box-shadow:
+    0 3px 8px rgba(0,0,0,0.08);
+
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 
-/* Hover-ефект повзунка */
+/* HOVER — стекло */
+.slider-wrapper input[type="range"]:hover::-webkit-slider-thumb {
+  background: rgba(255,255,255,0.28);
 
-.slider-wrapper input[type="range"]::-webkit-slider-thumb:hover {
-  transform: scale(1.12);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+
+  border: 1px solid rgba(255,255,255,0.65);
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.9);
+
+  transform: scale(1.08);
 }
 
+
+/* ACTIVE — объёмная линза (как на 3 картинке) */
+.slider-wrapper input[type="range"]:active::-webkit-slider-thumb {
+  background: rgba(255,255,255,0.18);
+
+  backdrop-filter: blur(40px) saturate(170%);
+  -webkit-backdrop-filter: blur(40px) saturate(170%);
+
+  border: 1px solid rgba(255,255,255,0.8);
+
+  box-shadow:
+    0 14px 30px rgba(0,0,0,0.18),
+    inset 0 2px 4px rgba(255,255,255,0.95),
+    inset 0 -4px 8px rgba(0,0,0,0.08);
+
+  transform: scale(1.18);
+}
+
+/* Белая подложка под thumb */
+.slider-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+
+  height: 25.4px;
+  width: 0px; /* ширину будем менять */
+  border-radius: 14px;
+
+  background: rgba(255,255,255,0.9);
+
+  pointer-events: none;
+  transition: width 0.15s ease;
+}
+
+.thumb-bg {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 25.4px;
+  width: 38.8px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.95);
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  opacity: 0;
+}
 
 /* ------------------------------------ Капсула значення ------------------------------------ */
 
@@ -1060,10 +1126,10 @@ body {
   width: 642.4px;
   background: rgb(241, 238, 234);
   border-radius: 50px;
-  margin-top: 25px;
+  margin-top: 30px;
   margin-bottom: 50px;
 
-  padding: 46px 27px 22px 27px;
+  padding: 28px 27px 22px 27px;
 
   display: flex;
   flex-direction: column;
@@ -1369,7 +1435,7 @@ body {
   align-items: center;
   justify-content: center;
 
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   font-weight: 600;
 }
 
